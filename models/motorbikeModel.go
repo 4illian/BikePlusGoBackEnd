@@ -1,0 +1,41 @@
+package models
+
+type MotorBikeModel struct {
+	Id                 string `json:"id,omitempty" bson:",omitempty"`
+	CompanyName        string `json:"company_name,omitempty" bson:",omitempty"`
+	Model              string `json:"model,omitempty" bson:",omitempty"`
+	Price              string `json:"price,omitempty" bson:",omitempty"`
+	Status             string `json:"status,omitempty" bson:",omitempty"`
+	BodyType           string `json:"body_type,omitempty" bson:",omitempty"`
+	FuelType           string `json:"fuel_type,omitempty" bson:",omitempty"`
+	EngineDescription  string `json:"engine_description,omitempty" bson:",omitempty"`
+	FuelSystem         string `json:"fuel_system,omitempty" bson:",omitempty"`
+	Cooling            string `json:"cooling,omitempty" bson:",omitempty"`
+	Displacement       string `json:"displacement,omitempty" bson:",omitempty"`
+	MaximumPower       string `json:"maximum_power,omitempty" bson:",omitempty"`
+	MaximumTorque      string `json:"maximum_torque,omitempty" bson:",omitempty"`
+	NumberOfCylinders  string `json:"number_of_cylinders,omitempty" bson:",omitempty"`
+	OverallLength      string `json:"overall_length,omitempty" bson:",omitempty"`
+	OverallWidth       string `json:"overall_width,omitempty" bson:",omitempty"`
+	OverallHeight      string `json:"overall_height,omitempty" bson:",omitempty"`
+	SeatHeight         string `json:"seat_height,omitempty" bson:",omitempty"`
+	GroundClearance    string `json:"ground_clearance,omitempty" bson:",omitempty"`
+	Wheelbase          string `json:"wheelbase,omitempty" bson:",omitempty"`
+	KerbOrWetWeight    string `json:"kerb_or_wet_weight,omitempty" bson:",omitempty"`
+	FuelTankCapacity   string `json:"fuel_tank_capacity,omitempty" bson:",omitempty"`
+	Bore               string `json:"bore,omitempty" bson:",omitempty"`
+	Stroke             string `json:"stroke,omitempty" bson:",omitempty"`
+	NumberOfGears      string `json:"number_of_gears,omitempty" bson:",omitempty"`
+	Clutch             string `json:"clutch,omitempty" bson:",omitempty"`
+	GearboxType        string `json:"gearbox_type,omitempty" bson:",omitempty"`
+	FrontBrake         string `json:"front_brake,omitempty" bson:",omitempty"`
+	RearBrake          string `json:"rear_brake,omitempty" bson:",omitempty"`
+	FrontSuspension    string `json:"front_suspension,omitempty" bson:",omitempty"`
+	RearSuspension     string `json:"rear_suspension,omitempty" bson:",omitempty"`
+	ZeroToHundred_kmph string `json:"0_to_100_kmph,omitempty" bson:",omitempty"`
+	Speedometer        string `json:"speedometer,omitempty" bson:",omitempty"`
+	Tachometer         string `json:"tachometer,omitempty" bson:",omitempty"`
+	TripMeter          string `json:"trip_meter,omitempty" bson:",omitempty"`
+	Clock              string `json:"clock,omitempty" bson:",omitempty"`
+	ElectricStart      string `json:"electric_start,omitempty" bson:",omitempty"`
+}
