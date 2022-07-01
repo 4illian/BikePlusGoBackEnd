@@ -1,10 +1,11 @@
 package main
 
+//go mod tidy
+
 import (
 	"database/sql"
 	"encoding/json"
 	_ "encoding/json"
-	"fmt"
 	_ "fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
@@ -61,10 +62,10 @@ func main() {
 		panic(err.Error())
 	}
 	defer db.Close()
-
 	router := mux.NewRouter()
-
+	router.HandleFunc("/company", getAllCompany).Methods("GET")
 	router.HandleFunc("/company/{id}", getCompanyById).Methods("GET")
+
 	router.HandleFunc("/model/{companyName}", getModelsByCompany).Methods("GET")
 
 	http.ListenAndServe(":8000", router)
@@ -92,10 +93,33 @@ func getCompanyById(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(model)
 }
 
+func getAllCompany(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+
+	var models []MotorBikeModel
+	result, err := db.Query("SELECT DISTINCT company_name from motorbike_data")
+	if err != nil {
+		panic(err.Error())
+	}
+	defer result.Close()
+	for result.Next() {
+		var model MotorBikeModel
+		err := result.Scan(&model.Model)
+		if err != nil {
+			panic(err.Error())
+		}
+		models = append(models, model)
+	}
+	json.NewEncoder(w).Encode(models)
+}
+
 func getModelsByCompany(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
-	fmt.Println("coucouc")
+	//fmt.Println("coucouc")
 	var models []MotorBikeModel
 	result, err := db.Query("SELECT model from motorbike_data WHERE company_name = ?", params["companyName"])
 	if err != nil {
